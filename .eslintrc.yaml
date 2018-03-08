@@ -1,0 +1,1 @@
+extends: '@smartrecruiters/eslint-config/node/main'

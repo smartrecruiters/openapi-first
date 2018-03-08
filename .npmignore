@@ -1,0 +1,12 @@
+.idea/
+*.iml
+coverage/
+test/
+examples/
+.editorconfig
+.eslintignore
+.eslintrc.yaml
+.istanbul.yml
+.npmignore
+.nvmrc
+README.hbs

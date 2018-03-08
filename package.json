@@ -1,0 +1,35 @@
+{
+  "name": "@smartrecruiters/openapi-first",
+  "version": "0.0.1",
+  "description": "Start your node REST app with designing API first!",
+  "repository": "smartrecruiters/openapi-first",
+  "license": "MIT",
+  "homepage": "https://github.com/smartrecruiters/openapi-first",
+  "bugs": {
+    "url": "https://github.com/smartrecruiters/openapi-first/issues"
+  },
+  "dependencies": {
+    "lodash": "4.17.5",
+    "type-is": "1.6.16"
+  },
+  "devDependencies": {
+    "@smartrecruiters/eslint-config": "3.0.0",
+    "chai": "4.1.2",
+    "eslint": "4.18.2",
+    "express": "4.16.2",
+    "istanbul": "0.4.5",
+    "jsdoc-to-markdown": "4.0.1",
+    "mocha": "5.0.4",
+    "nsp": "3.2.1",
+    "sinon": "4.4.2"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha",
+    "test:coverage:report": "istanbul cover node_modules/.bin/_mocha",
+    "test:coverage:check": "istanbul check-coverage",
+    "test:coverage": "npm run test:coverage:report && npm run test:coverage:check",
+    "readme": "jsdoc2md --template README.hbs middlewares/**/*.js openapi/*.js > README.md",
+    "preversion": "nsp check && npm run lint && npm run test:coverage && npm run readme"
+  }
+}

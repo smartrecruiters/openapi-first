@@ -1,0 +1,3 @@
+--recursive
+--ui bdd
+--require ./test/globals.js

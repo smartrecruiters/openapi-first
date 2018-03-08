@@ -1,0 +1,48 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Hello World API"
+    },
+    "paths": {
+        "/hello": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Greeting"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-swagger-router-controller": "greeting/hello",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "schema": {
+                            "type": "string",
+                            "default": "world"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Greeting": {
+                "type": "object",
+                "properties": {
+                    "greeting": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
