@@ -84,7 +84,7 @@ module.exports = function(req, res) {
 
 Now, let's make an `app.js` file:
 ```javascript
-const openApiFirst = require('@smartcruiters/openapi-first')
+const openApiFirst = require('@smartrecruiters/openapi-first')
 const express = require('express')
 
 // create express app
@@ -96,10 +96,10 @@ const spec = require('./spec.json')
 const api = openApiFirst(app, spec)
 
 // to enable setting default values on empty query params
-api.use(require('@smartcruiters/openapi-first/middlewares/query/defaults')())
+api.use(require('@smartrecruiters/openapi-first/middlewares/query/defaults')())
 
 // to link the specification with code in 'api' directory
-api.use(require('@smartcruiters/openapi-first/middlewares/controllers/by-property')({dir: __dirname}))
+api.use(require('@smartrecruiters/openapi-first/middlewares/controllers/by-property')({dir: __dirname}))
 
 app.listen(8080)
 
