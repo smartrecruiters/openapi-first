@@ -165,6 +165,6 @@ const onlyAdminMiddleware = operation =>
 [npm-url]: https://www.npmjs.com/package/@smartrecruiters/openapi-first
 [downloads-image]: https://img.shields.io/npm/dm/@smartrecruiters/openapi-first.svg
 [downloads-url]: https://www.npmjs.com/package/@smartrecruiters/openapi-first
-[node-version-image]: https://img.shields.io/node/v/openapi-first.svg
+[node-version-image]: https://img.shields.io/node/v/@smartrecruiters/openapi-first.svg
 [node-version-url]: https://nodejs.org/en/download/
 
