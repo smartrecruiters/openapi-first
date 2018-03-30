@@ -3,6 +3,7 @@
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
 [![Node.js Version][node-version-image]][node-version-url]
+[![Licence][license-image]][license-url]
 
 Start your node REST app with designing API first!
 
@@ -157,6 +158,10 @@ const onlyAdminMiddleware = operation =>
     }
 ```
 
+## Contributing
+
+Please see our [Code of conduct](docs/CODE_OF_CONDUCT.md) and [Contributing guidelines](docs/CONTRIBUTING.md)
+
 ## License
 
 [MIT](LICENSE)
@@ -167,4 +172,5 @@ const onlyAdminMiddleware = operation =>
 [downloads-url]: https://www.npmjs.com/package/@smartrecruiters/openapi-first
 [node-version-image]: https://img.shields.io/node/v/@smartrecruiters/openapi-first.svg
 [node-version-url]: https://nodejs.org/en/download/
-
+[license-url]: https://github.com/smartrecruiters/openapi-first/blob/master/LICENSE
+[license-image]: https://img.shields.io/npm/l/@smartrecruiters/openapi-first.svg
