@@ -4,6 +4,7 @@
 [![NPM Downloads][downloads-image]][downloads-url]
 [![Node.js Version][node-version-image]][node-version-url]
 [![Licence][license-image]][license-url]
+[![Build][travis-image]][travis-url]
 
 Start your node REST app with designing API first!
 
@@ -174,3 +175,5 @@ Please see our [Code of conduct](docs/CODE_OF_CONDUCT.md) and [Contributing guid
 [node-version-url]: https://nodejs.org/en/download/
 [license-url]: https://github.com/smartrecruiters/openapi-first/blob/master/LICENSE
 [license-image]: https://img.shields.io/npm/l/@smartrecruiters/openapi-first.svg
+[travis-url]: https://travis-ci.org/smartrecruiters/openapi-first
+[travis-image]: https://api.travis-ci.org/smartrecruiters/openapi-first.svg?branch=master
