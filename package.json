@@ -16,14 +16,14 @@
     "type-is": "1.6.16"
   },
   "devDependencies": {
-    "@smartrecruiters/eslint-config": "4.0.0",
+    "@smartrecruiters/eslint-config": "4.1.0",
     "chai": "4.1.2",
     "eslint": "4.19.1",
     "eslint-plugin-security": "1.4.0",
     "express": "4.16.3",
     "istanbul": "0.4.5",
     "jsdoc-to-markdown": "4.0.1",
-    "mocha": "5.1.1",
+    "mocha": "5.2.0",
     "nsp": "3.2.1",
     "sinon": "5.0.7"
   },
