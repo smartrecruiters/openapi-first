@@ -33,4 +33,26 @@ describe('query param defaults', () => {
         sinon.assert.called(next)
         expect(req.query).to.eql({test: 'abc'})
     })
+
+    it('should override default value if query param set', () => {
+        // given
+        const operation = {
+            parameters: [
+                {in: 'query', name: 'arrayParam', schema: {type: 'array', default: ['a1', 'a2']}},
+                {in: 'query', name: 'stringParam', schema: {type: 'string', default: 'def'}},
+                {in: 'query', name: 'intParam', schema: {type: 'integer', default: 1}}
+            ]
+        }
+        const middleware = queryDefaults(operation)
+
+        const req = {query: {arrayParam: ['b1'], stringParam: 'xyz', intParam: 0}}
+        const next = sinon.spy()
+
+        // when
+        middleware(req, {}, next)
+
+        // then
+        sinon.assert.called(next)
+        expect(req.query).to.eql({arrayParam: ['b1'], stringParam: 'xyz', intParam: 0})
+    })
 })
