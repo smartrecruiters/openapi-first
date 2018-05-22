@@ -1,3 +1,11 @@
+<a name="0.1.2"></a>
+## <small>0.1.2 (2018-05-22)</small>
+
+* Update dev dependencies (#5) ([902b7e7](https://github.com/smartrecruiters/openapi-first/commit/902b7e7)), closes [#5](https://github.com/smartrecruiters/openapi-first/issues/5)
+* Using `defaultsDeep` causes that values for `array` type of parameters are merged with default value ([f24cee1](https://github.com/smartrecruiters/openapi-first/commit/f24cee1)), closes [#6](https://github.com/smartrecruiters/openapi-first/issues/6)
+
+
+
 <a name="0.1.1"></a>
 ## <small>0.1.1 (2018-05-10)</small>
 
