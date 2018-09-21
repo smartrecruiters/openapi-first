@@ -12,20 +12,20 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "lodash": "4.17.10",
+    "lodash": "4.17.11",
     "type-is": "1.6.16"
   },
   "devDependencies": {
     "@smartrecruiters/eslint-config": "4.1.0",
     "chai": "4.1.2",
-    "eslint": "5.5.0",
+    "eslint": "5.6.0",
     "eslint-plugin-security": "1.4.0",
     "express": "4.16.3",
     "istanbul": "0.4.5",
     "jsdoc-to-markdown": "4.0.1",
     "mocha": "5.2.0",
     "nsp": "3.2.1",
-    "sinon": "6.2.0"
+    "sinon": "6.3.4"
   },
   "scripts": {
     "lint": "eslint .",
