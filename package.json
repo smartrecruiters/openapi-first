@@ -24,7 +24,6 @@
     "istanbul": "0.4.5",
     "jsdoc-to-markdown": "4.0.1",
     "mocha": "5.2.0",
-    "nsp": "3.2.1",
     "sinon": "6.3.4"
   },
   "scripts": {
@@ -34,6 +33,6 @@
     "test:coverage:check": "istanbul check-coverage",
     "test:coverage": "npm run test:coverage:report && npm run test:coverage:check",
     "readme": "jsdoc2md --template docs/docs.hbs middlewares/**/*.js openapi/*.js > README.md",
-    "preversion": "nsp check && npm run lint && npm run test:coverage && npm run readme"
+    "preversion": "npm run lint && npm run test:coverage && npm run readme"
   }
 }
