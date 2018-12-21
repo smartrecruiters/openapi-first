@@ -1,3 +1,10 @@
+## <small>0.1.3 (2018-12-21)</small>
+
+* Empty query param case handled for query params of type (#14) ([d25f556](https://github.com/smartrecruiters/openapi-first/commit/d25f556)), closes [#14](https://github.com/smartrecruiters/openapi-first/issues/14)
+* Update dependencies (#11) ([13864ea](https://github.com/smartrecruiters/openapi-first/commit/13864ea)), closes [#11](https://github.com/smartrecruiters/openapi-first/issues/11)
+
+
+
 <a name="0.1.2"></a>
 ## <small>0.1.2 (2018-05-22)</small>
 
