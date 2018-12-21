@@ -198,6 +198,29 @@ describe('query param parser', () => {
         expect(req.query.test).to.eql(['a', 'b'])
     })
 
+    it('should convert empty query param to single element array', () => {
+        // given
+        const operation = {
+            parameters: [{
+                in: 'query',
+                name: 'arr',
+                style: 'spaceDelimited',
+                schema: {type: 'array', items: {type: 'string'}}
+            }]
+        }
+        const middleware = queryParamParser(operation)
+
+        const req = {query: {arr: ''}}
+        const next = sinon.spy()
+
+        // when
+        middleware(req, undefined, next)
+
+        // then
+        sinon.assert.called(next)
+        expect(req.query.arr).to.eql([''])
+    })
+
     it('should convert integer array query param', () => {
         // given
         const operation = {parameters: [{in: 'query', name: 'test', schema: {type: 'array', items: {type: 'integer'}}}]}
