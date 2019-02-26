@@ -83,4 +83,13 @@ describe('oauth scopes middleware', () => {
         // when
         middleware(req, undefined, done)
     })
+
+    it('should pass request when security property not set on operation', () => {
+        // given
+        const operation = {}
+        const middleware = oauthScopes()(operation)
+
+        // when
+        expect(middleware).to.be.undefined
+    })
 })
