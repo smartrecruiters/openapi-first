@@ -34,7 +34,7 @@ describe('oauth scopes middleware', () => {
                 }
             ]
         }
-        const middleware = oauthScopes({grantedScopesLocation: 'headers[\'X-Oauth-Scopes\']'})(operation)
+        const middleware = oauthScopes({grantedScopesLocation: 'headers.X-Oauth-Scopes'})(operation)
         const req = {headers: {'X-Oauth-Scopes': ['read', 'write']}}
 
         // when
