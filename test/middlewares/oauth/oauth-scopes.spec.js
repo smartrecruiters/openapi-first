@@ -92,4 +92,19 @@ describe('oauth scopes middleware', () => {
         // when
         expect(middleware).to.be.undefined
     })
+
+    it('should pass request when security property does not contain oauth', () => {
+        // given
+        const operation = {
+            security: [
+                {
+                    key: []
+                }
+            ]
+        }
+        const middleware = oauthScopes()(operation)
+
+        // when
+        expect(middleware).to.be.undefined
+    })
 })

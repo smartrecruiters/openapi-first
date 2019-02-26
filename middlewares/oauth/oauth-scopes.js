@@ -6,5 +6,8 @@ module.exports = ({grantedScopesLocation = 'headers.x-oauth-scopes'} = {}) => op
     }
 
     const [{oauth: requiredScopes}] = operation.security
-    return oauthScopes(requiredScopes, grantedScopesLocation)
+
+    if (requiredScopes) {
+        return oauthScopes(requiredScopes, grantedScopesLocation)
+    }
 }
