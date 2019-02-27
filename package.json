@@ -16,22 +16,20 @@
     "type-is": "1.6.16"
   },
   "devDependencies": {
-    "@smartrecruiters/eslint-config": "4.1.0",
-    "chai": "4.1.2",
-    "eslint": "5.6.0",
+    "@smartrecruiters/eslint-config": "4.3.0",
+    "chai": "4.2.0",
+    "eslint": "5.14.1",
     "eslint-plugin-security": "1.4.0",
-    "express": "4.16.3",
-    "istanbul": "0.4.5",
+    "express": "4.16.4",
     "jsdoc-to-markdown": "4.0.1",
-    "mocha": "5.2.0",
-    "sinon": "6.3.4"
+    "mocha": "6.0.2",
+    "nyc": "13.3.0",
+    "sinon": "7.2.5"
   },
   "scripts": {
     "lint": "eslint .",
     "test": "mocha",
-    "test:coverage:report": "istanbul cover node_modules/.bin/_mocha",
-    "test:coverage:check": "istanbul check-coverage",
-    "test:coverage": "npm run test:coverage:report && npm run test:coverage:check",
+    "test:coverage": "nyc mocha",
     "readme": "jsdoc2md --template docs/docs.hbs middlewares/**/*.js openapi/*.js > README.md",
     "preversion": "npm run lint && npm run test:coverage && npm run readme"
   }

@@ -2,6 +2,17 @@ const queryDefaults = require('../../../middlewares/query/defaults')()
 
 describe('query param defaults', () => {
 
+    it('should not create middleware when no params', () => {
+        // given
+        const operation = {}
+
+        // when
+        const middleware = queryDefaults(operation)
+
+        // then
+        expect(middleware).to.be.undefined
+    })
+
     it('should not create middleware when no defaults for query params', () => {
         // given
         const operation = {parameters: [{in: 'query', name: 'test2'}]}

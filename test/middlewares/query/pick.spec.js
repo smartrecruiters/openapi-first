@@ -4,7 +4,7 @@ describe('query param pick', () => {
 
     it('should not create middleware when no query params', () => {
         // given
-        const operation = {parameters: []}
+        const operation = {}
         const middleware = queryPick(operation)
 
         expect(middleware).to.be.undefined
