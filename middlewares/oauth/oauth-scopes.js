@@ -1,4 +1,4 @@
-const {pickBy, isMatch, keys, values, flatten} = require('lodash')
+const {pickBy, keys, values, flatten} = require('lodash')
 
 const oauthScopes = require('../../lib/middlewares/oauth/oauth-scopes')
 
@@ -26,7 +26,7 @@ module.exports = ({grantedScopesLocation = 'headers.x-oauth-scopes'} = {}) => (o
         return
     }
 
-    const oauthSchemes = pickBy(spec.components.securitySchemes, strategy => isMatch(strategy, {type: 'oauth2'}))
+    const oauthSchemes = pickBy(spec.components.securitySchemes, scheme => scheme.type === 'oauth2')
     const oauthNames = keys(oauthSchemes)
     const oauthStrategy = security.find(strategy => oauthNames.includes(keys(strategy).toString()))
 

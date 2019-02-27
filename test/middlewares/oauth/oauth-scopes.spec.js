@@ -43,7 +43,7 @@ describe('oauth scopes middleware', () => {
 
     it('should pass request containing required scopes in header', done => {
         // given
-        const middleware = oauthScopes({grantedScopesLocation: 'headers.x-oauth-scopes'})(operation, {spec})
+        const middleware = oauthScopes()(operation, {spec})
         const req = {headers: {'x-oauth-scopes': ['read', 'write']}}
 
         // when
