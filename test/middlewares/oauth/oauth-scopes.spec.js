@@ -3,20 +3,39 @@ const MissingRequiredScopes = require('../../../errors/MissingRequiredScopes')
 
 describe('oauth scopes middleware', () => {
 
-    it('should pass request containing required scopes in user', done => {
-        // given
-        const operation = {
-            security: [
-                {
-                    oauth: [
-                        'write',
-                        'read'
+    const spec = {
+        paths: {
+            '/hello': {
+                get: {
+                    security: [
+                        {
+                            oauth: [
+                                'write',
+                                'execute'
+                            ]
+                        }
                     ]
                 }
-            ]
+            }
+        },
+        components: {
+            securitySchemes: {
+                oauth: {
+                    type: 'oauth2'
+                },
+                key: {
+                    type: 'apiKey'
+                }
+            }
         }
-        const middleware = oauthScopes({grantedScopesLocation: 'user.grantedScopes'})(operation)
-        const req = {user: {grantedScopes: ['read']}}
+    }
+
+    const operation = spec.paths['/hello'].get
+
+    it('should pass request containing required scopes in user', done => {
+        // given
+        const middleware = oauthScopes({grantedScopesLocation: 'user.grantedScopes'})(operation, {spec})
+        const req = {user: {grantedScopes: ['write']}}
 
         // when
         middleware(req, undefined, done)
@@ -24,17 +43,7 @@ describe('oauth scopes middleware', () => {
 
     it('should pass request containing required scopes in header', done => {
         // given
-        const operation = {
-            security: [
-                {
-                    oauth: [
-                        'write',
-                        'read'
-                    ]
-                }
-            ]
-        }
-        const middleware = oauthScopes({grantedScopesLocation: 'headers.x-oauth-scopes'})(operation)
+        const middleware = oauthScopes({grantedScopesLocation: 'headers.x-oauth-scopes'})(operation, {spec})
         const req = {headers: {'x-oauth-scopes': ['read', 'write']}}
 
         // when
@@ -42,17 +51,8 @@ describe('oauth scopes middleware', () => {
     })
 
     it('should indicate missing required scopes', () => {
-        const operation = {
-            security: [
-                {
-                    oauth: [
-                        'write',
-                        'execute'
-                    ]
-                }
-            ]
-        }
-        const middleware = oauthScopes({grantedScopesLocation: 'user.grantedScopes'})(operation)
+        //given
+        const middleware = oauthScopes({grantedScopesLocation: 'user.grantedScopes'})(operation, {spec})
         const req = {user: {grantedScopes: ['read']}}
         const next = sinon.spy()
 
@@ -66,28 +66,31 @@ describe('oauth scopes middleware', () => {
 
     it('should pass request when granted scopes not set', done => {
         // given
-        const operation = {
-            security: [
-                {
-                    oauth: [
-                        'write',
-                        'read'
-                    ],
-                    key: []
-                }
-            ]
-        }
-        const middleware = oauthScopes({grantedScopesLocation: 'user.grantedScopes'})(operation)
+        const middleware = oauthScopes({grantedScopesLocation: 'user.grantedScopes'})(operation, {spec})
         const req = {user: {}}
 
         // when
         middleware(req, undefined, done)
     })
 
-    it('should pass request when security property not set on operation', () => {
+    it('should pass request when security property not set anywhere', () => {
         // given
-        const operation = {}
-        const middleware = oauthScopes()(operation)
+        const spec = {
+            paths: {
+                '/hello': {
+                    get: {}
+                }
+            },
+            components: {
+                securitySchemes: {
+                    oauth: {
+                        type: 'oauth2'
+                    }
+                }
+            }
+        }
+        const operation = spec.paths['/hello'].get
+        const middleware = oauthScopes()(operation, {spec})
 
         // when
         expect(middleware).to.be.undefined
@@ -102,9 +105,95 @@ describe('oauth scopes middleware', () => {
                 }
             ]
         }
-        const middleware = oauthScopes()(operation)
+        const middleware = oauthScopes()(operation, {spec})
 
         // when
         expect(middleware).to.be.undefined
+    })
+
+    it('should use global security property', () => {
+        // given
+        const spec = {
+            security: [
+                {
+                    oauth: [
+                        'write',
+                        'execute'
+                    ]
+                }
+            ],
+            paths: {
+                '/hello': {
+                    get: {}
+                }
+            },
+            components: {
+                securitySchemes: {
+                    oauth: {
+                        type: 'oauth2'
+                    }
+                }
+            }
+        }
+        const operation = spec.paths['/hello'].get
+        const middleware = oauthScopes({grantedScopesLocation: 'user.grantedScopes'})(operation, {spec})
+        const req = {user: {grantedScopes: ['read']}}
+        const next = sinon.spy()
+
+        // when
+        middleware(req, undefined, next)
+
+        // then
+        sinon.assert.calledWithMatch(next, sinon.match.instanceOf(MissingRequiredScopes)
+            .and(sinon.match.has('requiredScopes', spec.security.find(strategy => strategy.oauth).oauth)))
+    })
+
+    it('should use first oauth security definition when more than one', () => {
+        // given
+        const spec = {
+            paths: {
+                '/hello': {
+                    get: {
+                        security: [
+                            {
+                                oauth1: [
+                                    'write',
+                                    'execute'
+                                ]
+                            },
+                            {
+                                oauth2: [
+                                    'read'
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            components: {
+                securitySchemes: {
+                    oauth1: {
+                        type: 'oauth2'
+                    },
+                    oauth2: {
+                        type: 'oauth2'
+                    },
+                    key: {
+                        type: 'apiKey'
+                    }
+                }
+            }
+        }
+        const operation = spec.paths['/hello'].get
+        const middleware = oauthScopes({grantedScopesLocation: 'user.grantedScopes'})(operation, {spec})
+        const req = {user: {grantedScopes: ['read']}}
+        const next = sinon.spy()
+
+        // when
+        middleware(req, undefined, next)
+
+        // then
+        sinon.assert.calledWithMatch(next, sinon.match.instanceOf(MissingRequiredScopes)
+            .and(sinon.match.has('requiredScopes', operation.security.find(strategy => strategy.oauth1).oauth1)))
     })
 })
