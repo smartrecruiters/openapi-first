@@ -3,10 +3,11 @@
 coverage/
 test/
 examples/
+.nyc_output/
 .editorconfig
 .eslintignore
 .eslintrc.yaml
-.istanbul.yml
 .npmignore
 .nvmrc
+.nycrc
 README.hbs
