@@ -136,7 +136,8 @@ Currently following middlewares are available:
 - removing unspecified query parameters,
 - content type validation,
 - routing to appropriate controller,
-- oauth scopes authorization.
+- oauth scopes authorization,
+- error handlers (`MissingRequiredScopes`).
 
 ### Validation middlewares
 
