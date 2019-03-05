@@ -23,4 +23,4 @@ Before submitting pull request, you can `$ npm run preversion`. It will:
 
 ## Fixing README.md
 
-Project's readme is generated using [docs/README.hbs](docs/README.hbs), so please modify this file.
+Project's readme is generated using [docs/docs.hbs](docs/docs.hbs), so please modify this file.
