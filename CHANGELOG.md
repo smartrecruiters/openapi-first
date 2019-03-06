@@ -1,3 +1,9 @@
+## 0.3.0 (2019-03-06)
+
+* Missing scopes error handler (#17) ([2aae9c0](https://github.com/smartrecruiters/openapi-first/commit/2aae9c0)), closes [#17](https://github.com/smartrecruiters/openapi-first/issues/17)
+
+
+
 ## 0.2.0 (2019-02-28)
 
 * Introduce new middleware for oauth scopes verification (#15) ([34f1984](https://github.com/smartrecruiters/openapi-first/commit/34f1984)), closes [#15](https://github.com/smartrecruiters/openapi-first/issues/15)
