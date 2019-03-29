@@ -1,7 +1,6 @@
 ## <small>0.3.1 (2019-03-29)</small>
 
 * by-property controller middleware handles rejected promises (#19) ([82b9d9a](https://github.com/smartrecruiters/openapi-first/commit/82b9d9a)), closes [#19](https://github.com/smartrecruiters/openapi-first/issues/19)
-* v0.3.1 ([6ed567c](https://github.com/smartrecruiters/openapi-first/commit/6ed567c))
 
 
 
