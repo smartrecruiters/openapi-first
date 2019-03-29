@@ -1,3 +1,10 @@
+## <small>0.3.1 (2019-03-29)</small>
+
+* by-property controller middleware handles rejected promises (#19) ([82b9d9a](https://github.com/smartrecruiters/openapi-first/commit/82b9d9a)), closes [#19](https://github.com/smartrecruiters/openapi-first/issues/19)
+* v0.3.1 ([6ed567c](https://github.com/smartrecruiters/openapi-first/commit/6ed567c))
+
+
+
 ## 0.3.0 (2019-03-06)
 
 * Missing scopes error handler (#17) ([2aae9c0](https://github.com/smartrecruiters/openapi-first/commit/2aae9c0)), closes [#17](https://github.com/smartrecruiters/openapi-first/issues/17)
