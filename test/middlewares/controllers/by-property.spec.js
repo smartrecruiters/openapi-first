@@ -1,27 +1,58 @@
 const controller = require('../../../middlewares/controllers/by-property')
-const path = require('path')
 
 describe('Controller', () => {
 
-    it('should return middleware', () => {
-        // given
-        const operation = {'x-swagger-router-controller': 'package'}
+    let req, res, next
 
-        // when
-        const middleware = controller({dir: path.join(__dirname, '../../..')})(operation)
-
-        // then
-        expect(middleware).to.equal(require('../../../package'))
+    beforeEach(() => {
+        req = sinon.spy()
+        res = sinon.spy()
+        next = sinon.spy()
     })
 
-    it('should return middleware', () => {
+    it('should build middleware', done => {
         // given
-        const operation = {'x-swagger-router-controller': 'test.globals'}
+        const operation = {'x-swagger-router-controller': 'example'}
+        const middleware = controller({dir: __dirname})(operation)
 
         // when
-        const middleware = controller({dir: path.join(__dirname, '../../..'), delimiter: /\./g})(operation)
+        const result = middleware(req, res, next)
 
         // then
-        expect(middleware).to.equal(require('../../globals'))
+        result.then(({req: reqArg, res: resArg, next: nextArg}) => {
+            expect(reqArg).to.eql(req)
+            expect(resArg).to.eql(res)
+            expect(nextArg).to.eql(next)
+        }).then(done)
+    })
+
+    it('should build middleware from nested file', done => {
+        // given
+        const operation = {'x-swagger-router-controller': 'dir.example'}
+        const middleware = controller({dir: __dirname, delimiter: /\./g})(operation)
+
+        // when
+        const result = middleware(req, res, next)
+
+        // then
+        result.then(({req: reqArg, res: resArg, next: nextArg}) => {
+            expect(reqArg).to.eql(req)
+            expect(resArg).to.eql(res)
+            expect(nextArg).to.eql(next)
+        }).then(done)
+    })
+
+    it('should pass errors from rejected Promises to next', done => {
+        // given
+        const operation = {'x-swagger-router-controller': 'rejected-promise-controller'}
+        const middleware = controller({dir: __dirname})(operation)
+
+        // when
+        const result = middleware(req, res, next)
+
+        // then
+        result.then(() => {
+            expect(next.calledOnceWith(sinon.match.instanceOf(Error))).to.be.true
+        }).then(done)
     })
 })
