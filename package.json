@@ -1,6 +1,6 @@
 {
   "name": "@smartrecruiters/openapi-first",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Start your node REST app with designing API first!",
   "repository": "smartrecruiters/openapi-first",
   "license": "MIT",

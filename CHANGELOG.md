@@ -1,3 +1,12 @@
+<a name="0.3.2"></a>
+## <small>0.3.2 (2019-04-26)</small>
+
+* Update changelog ([40638f2](https://github.com/smartrecruiters/openapi-first/commit/40638f2))
+* Update CHANGELOG.md ([16e609c](https://github.com/smartrecruiters/openapi-first/commit/16e609c))
+* Update dependencies (#20) ([b2d805a](https://github.com/smartrecruiters/openapi-first/commit/b2d805a)), closes [#20](https://github.com/smartrecruiters/openapi-first/issues/20)
+
+
+
 ## <small>0.3.1 (2019-03-29)</small>
 
 * by-property controller middleware handles rejected promises (#19) ([82b9d9a](https://github.com/smartrecruiters/openapi-first/commit/82b9d9a)), closes [#19](https://github.com/smartrecruiters/openapi-first/issues/19)
