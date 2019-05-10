@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const openApiFirst = require('..')
 const express = require('express')
 const path = require('path')
@@ -28,5 +29,4 @@ api.use(require('../middlewares/controllers/by-property')({
     dir: path.join(__dirname, 'api'), propertyName: 'operationId'
 }))
 
-
-const server = app.listen(8080, () => console.log("Server listening:", server.address()))
+const server = app.listen(8080, () => console.log('Server listening:', server.address()))

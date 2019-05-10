@@ -2,12 +2,12 @@ const tokens = [
     {
         token: 'abc',
         userId: '1',
-        grantedScopes: ["read:users"]
+        grantedScopes: ['read:users']
     },
     {
         token: 'def',
         userId: '2',
-        grantedScopes: ["write:users"]
+        grantedScopes: ['write:users']
     }
 ]
 
