@@ -19,7 +19,7 @@
                         }
                     }
                 },
-                "x-swagger-router-controller": "greeting/hello",
+                "operationId": "greeting/hello",
                 "parameters": [
                     {
                         "in": "query",
@@ -28,6 +28,33 @@
                             "type": "string",
                             "default": "world"
                         }
+                    }
+                ]
+            }
+        },
+        "/users": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "users/list",
+                "security": [
+                    {
+                        "oauth": [
+                            "read:users"
+                        ]
                     }
                 ]
             }
@@ -40,6 +67,34 @@
                 "properties": {
                     "greeting": {
                         "type": "string"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "oauth": {
+                "type": "oauth2",
+                "flows": {
+                    "password": {
+                        "tokenUrl": "https://example.com/api/oauth/token",
+                        "scopes": {
+                            "write:users": "create users",
+                            "read:users": "read users"
+                        }
                     }
                 }
             }
