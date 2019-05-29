@@ -10,9 +10,9 @@ module.exports = () => (err, req, res, next) => {
     if (err instanceof MissingRequiredScopesError) {
         const scope = err.requiredScopes.join(' ')
         res.setHeader('WWW-Authenticate',
-            `Bearer scope="${scope}" error="insufficient_scope" `
+            `Bearer scope="${scope}", error="insufficient_scope", `
             + 'error_description="Insufficient scope for this resource"')
-        res.status(403).end()
+        res.status(403).json({message: `Missing required scopes: ${err.requiredScopes}`})
     } else {
         return next(err)
     }
