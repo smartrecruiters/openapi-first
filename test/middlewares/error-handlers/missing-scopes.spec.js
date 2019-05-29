@@ -6,22 +6,36 @@ describe('missing scopes error handler', () => {
     it('should catch MissingRequiredScopes', () => {
         // given
         const res = {
-            json(obj) {
-                this.message = obj.message
+            setHeader(name, value) {
+                if (!this.headers) {
+                    this.headers = {}
+                }
+                this.headers[name] = value
                 return this
             },
             status(status) {
                 this.statusCode = status
                 return this
+            },
+            /* eslint-disable no-empty-function */
+            end () {
             }
         }
 
+        const mockRes = sinon.mock(res, 'end')
+        mockRes.expects('end').once()
+
         // when
-        missingScopesHandler(new MissingRequiredScopes(['write']), undefined, res, undefined)
+        missingScopesHandler(new MissingRequiredScopes(['write', 'delete']), undefined, res, undefined)
 
         // then
+        mockRes.verify()
+
         expect(res.statusCode).to.eql(403)
-        expect(res.message).to.eql('Missing required scopes: write')
+        expect(res.headers).to.eql({'WWW-Authenticate':
+                'Bearer scope="write delete" '
+                + 'error="insufficient_scope" '
+                + 'error_description="Insufficient scope for this resource"'})
     })
 
     it('should not catch different errors', () => {

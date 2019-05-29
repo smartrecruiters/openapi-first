@@ -8,7 +8,11 @@ const MissingRequiredScopesError = require('../../errors/MissingRequiredScopes')
  */
 module.exports = () => (err, req, res, next) => {
     if (err instanceof MissingRequiredScopesError) {
-        res.status(403).json({message: `Missing required scopes: ${err.requiredScopes}`})
+        const scope = err.requiredScopes.join(' ')
+        res.setHeader('WWW-Authenticate',
+            `Bearer scope="${scope}" error="insufficient_scope" `
+            + 'error_description="Insufficient scope for this resource"')
+        res.status(403).end()
     } else {
         return next(err)
     }
