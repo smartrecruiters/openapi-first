@@ -1,3 +1,10 @@
+## 0.4.0 (2019-05-30)
+
+* OAuth scopes error handler with WWW-Authenticate header (#25) ([1162064](https://github.com/smartrecruiters/openapi-first/commit/1162064)), closes [#25](https://github.com/smartrecruiters/openapi-first/issues/25)
+* Update dependencies (#26) ([7f47f6d](https://github.com/smartrecruiters/openapi-first/commit/7f47f6d)), closes [#26](https://github.com/smartrecruiters/openapi-first/issues/26)
+
+
+
 <a name="0.3.2"></a>
 ## <small>0.3.2 (2019-04-26)</small>
 
