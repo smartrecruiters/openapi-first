@@ -3,7 +3,7 @@ const MissingRequiredScopesError = require('../../errors/MissingRequiredScopes')
 const insufficientScope = (realm, scope) => {
     const scheme = 'Bearer '
     const properties = [realm ? `realm="${realm}"` : '',
-        `scope="${scope}"`,
+        scope ? `scope="${scope}"` : '',
         'error="insufficient_scope"',
         'error_description="Insufficient scope for this resource"']
     return scheme + properties.filter(Boolean).join(', ')

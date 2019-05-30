@@ -53,6 +53,19 @@ describe('missing scopes error handler', () => {
         expect(res.message).to.eql('Missing required scopes: write')
     })
 
+    it('should catch MissingRequiredScopes and return response header without realm and scope', () => {
+        // given
+
+        // when
+        missingScopesHandler()(new MissingRequiredScopes(), undefined, res, undefined)
+
+        // then
+        expect(res.statusCode).to.eql(403)
+        expect(res.headers).to.eql({'WWW-Authenticate':
+                'Bearer error="insufficient_scope", error_description="Insufficient scope for this resource"'})
+        expect(res.message).to.eql('Missing required scopes: ')
+    })
+
     it('should not catch different errors', () => {
         // given
         const next = sinon.spy()
