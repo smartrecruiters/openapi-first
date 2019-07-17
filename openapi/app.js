@@ -1,9 +1,9 @@
 const {forOwn, cloneDeep, unionBy} = require('lodash')
 
 const pathUtils = require('./path')
-const httpMethods = require('./http-methods')
 const {uniquenessCriterion} = require('./parameters')
 
+const middlewareOncePerReq = require('../lib/middleware-once-per-req')
 const refResolver = require('../lib/utils/ref-resolver')
 
 module.exports = function (app, spec) {
@@ -12,12 +12,14 @@ module.exports = function (app, spec) {
 
     return {
         use: openApiMiddleware => {
+            const oncePerReq = middlewareOncePerReq()
+
             forOwn(spec.paths, (pathItem, path) => {
 
                 const defaultParams = pathItem.parameters && pathItem.parameters.map(resolveRef)
 
                 forOwn(pathItem, (value, key) => {
-                    if (!httpMethods.is(key)) {
+                    if (!value.operationId) {
                         return
                     }
 
@@ -31,7 +33,7 @@ module.exports = function (app, spec) {
 
                     const middleware = openApiMiddleware(operation, {spec})
                     if (middleware) {
-                        app[key](pathUtils.toRoutePath(path), middleware)
+                        app[key](pathUtils.toRoutePath(path), oncePerReq(middleware))
                     }
                 })
             })

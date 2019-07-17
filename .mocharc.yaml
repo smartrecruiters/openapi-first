@@ -1,0 +1,4 @@
+recursive: true
+require:
+  - chai/register-expect
+  - ./test/globals.js
