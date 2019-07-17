@@ -40,10 +40,7 @@ describe('api', () => {
         // then
         sinon.assert.calledThrice(middlewareA)
         sinon.assert.calledWithMatch(app.get, '/a', sinon.match.func)
-        sinon.assert.called(middlewareA)
         sinon.assert.calledWithMatch(app.get, '/b', sinon.match.func)
-        sinon.assert.called(middlewareA)
         sinon.assert.calledWithMatch(app.post, '/b', sinon.match.func)
-        sinon.assert.called(middlewareA)
     })
 })
