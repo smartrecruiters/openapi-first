@@ -16,11 +16,5 @@ If you have node installed, `$ npm install` and you are ready to go.
 
 Before submitting pull request, you can `$ npm run preversion`. It will:
 
- * audit package.json dependencies (we use [nsp](https://nodesecurity.io/)),
  * lint the code (we use [eslint](https://eslint.org/) and [@smartrecruiters/eslint-config](https://www.npmjs.com/package/@smartrecruiters/eslint-config) and [eslint-plugin-security](https://github.com/nodesecurity/eslint-plugin-security)),
  * test the code and check coverage (we use [mocha](https://mochajs.org/), [chai](http://www.chaijs.com/api/bdd/), [sinon](http://sinonjs.org/) and [istanbul](https://istanbul.js.org/)),
- * regenerate README.md (we use [jsdoc-to-markdown](https://www.npmjs.com/package/jsdoc-to-markdown)).
-
-## Fixing README.md
-
-Project's readme is generated using [docs/docs.hbs](docs/docs.hbs), so please modify this file.
