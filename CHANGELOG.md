@@ -1,3 +1,9 @@
+## <small>0.4.1 (2019-07-18)</small>
+
+* ISSUE-7 - fix middleware for inclusive paths (#28) ([ca5269c](https://github.com/smartrecruiters/openapi-first/commit/ca5269c)), closes [#28](https://github.com/smartrecruiters/openapi-first/issues/28)
+
+
+
 ## 0.4.0 (2019-05-30)
 
 * OAuth scopes error handler with WWW-Authenticate header (#25) ([1162064](https://github.com/smartrecruiters/openapi-first/commit/1162064)), closes [#25](https://github.com/smartrecruiters/openapi-first/issues/25)
