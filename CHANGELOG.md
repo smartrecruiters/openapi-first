@@ -1,3 +1,9 @@
+## <small>0.4.2 (2019-07-22)</small>
+
+* Remove uuid dependency & update dependencies (#29) ([a710252](https://github.com/smartrecruiters/openapi-first/commit/a710252)), closes [#29](https://github.com/smartrecruiters/openapi-first/issues/29)
+
+
+
 ## <small>0.4.1 (2019-07-18)</small>
 
 * ISSUE-7 - fix middleware for inclusive paths (#28) ([ca5269c](https://github.com/smartrecruiters/openapi-first/commit/ca5269c)), closes [#28](https://github.com/smartrecruiters/openapi-first/issues/28)
