@@ -9,7 +9,7 @@
     "url": "https://github.com/smartrecruiters/openapi-first/issues"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "dependencies": {
     "lodash": "4.17.15",
