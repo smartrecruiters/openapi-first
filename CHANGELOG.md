@@ -1,4 +1,4 @@
-## 1.0.0 (2021-07-08)
+## 1.0.1 (2021-07-08)
 
 * BREAKING CHANGE: drop support for Node < 10 (#33) ([65c67f3](https://github.com/smartrecruiters/openapi-first/commit/65c67f3)), closes [#27](https://github.com/smartrecruiters/openapi-first/issues/27) [#33](https://github.com/smartrecruiters/openapi-first/issues/33)
 * feat: update dependencies (#33) ([65c67f3](https://github.com/smartrecruiters/openapi-first/commit/65c67f3)), closes [#30](https://github.com/smartrecruiters/openapi-first/issues/30)
