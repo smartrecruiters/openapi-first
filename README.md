@@ -122,10 +122,10 @@ The response should be 200 with body:
 
 ## openapi middlewares
 
-You can use one of the middlewares under `@smartrecruiters/middlewares/*` or create your own. Such middlewares will be 
-applied to connect-style app for each operation as they are specification and operation aware. For instace, 
-`@smartrecruiters/middlewares/query/validate` middleware will be applied to any and only operation which has query 
-parameters defined, passing an Error to `next` callback when `req.query` is invalid. 
+You can use one of the middlewares under `@smartrecruiters/middlewares/*` or create your own. Such middlewares will be
+applied to connect-style app for each operation as they are specification and operation aware. For instace,
+`@smartrecruiters/middlewares/query/validate` middleware will be applied to any and only operation which has query
+parameters defined, passing an Error to `next` callback when `req.query` is invalid.
 
 Currently following middlewares are available:
 - request body validation,
@@ -147,7 +147,7 @@ The recommended schema validator is [`@smartrecruiters/openapi-schema-validator`
 ### Create your own openapi middleware
 
 Adding your own openapi is very simple. Let's say your operation has extension
-[OpenAPI Specification 3.0 Specification Extension](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#specificationExtensions) 'x-only-admin'. 
+[OpenAPI Specification 3.0 Specification Extension](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#specificationExtensions) 'x-only-admin'.
 If it is set on, this will mean that only users with admin can use this method.
 Assuming some preceding middleware is setting `req.user.role`, you can write a simple openapi middleware
 that will gather information from operation object and act accordingly:
@@ -177,5 +177,5 @@ Please see our [Code of conduct](docs/CODE_OF_CONDUCT.md) and [Contributing guid
 [node-version-url]: https://nodejs.org/en/download/
 [license-url]: https://github.com/smartrecruiters/openapi-first/blob/master/LICENSE
 [license-image]: https://img.shields.io/npm/l/@smartrecruiters/openapi-first.svg
-[travis-url]: https://travis-ci.org/smartrecruiters/openapi-first
-[travis-image]: https://api.travis-ci.org/smartrecruiters/openapi-first.svg?branch=master
+[travis-url]: https://travis-ci.com/smartrecruiters/openapi-first
+[travis-image]: https://api.travis-ci.com/smartrecruiters/openapi-first.svg?branch=master
