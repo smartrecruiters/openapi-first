@@ -12,9 +12,9 @@ Start your node REST app with designing API first!
 
 If you:
 - use OpenAPI Specification 3.0 to document your REST APIs written in node.js,
-- like design first approach regardign REST APIs
+- like design first approach regarding REST APIs
 - want your specification to be single source of truth of your API,
-- want to handle validation and parsing of requests query, body, content-type in a unified manner for all API endpoints,
+- want to handle validation and parsing of requests query, path, body, content-type in a unified manner for all API endpoints,
 
 then `@smartrecruiters/openapi-first` is what you are looking for!
 
@@ -123,7 +123,7 @@ The response should be 200 with body:
 ## openapi middlewares
 
 You can use one of the middlewares under `@smartrecruiters/middlewares/*` or create your own. Such middlewares will be
-applied to connect-style app for each operation as they are specification and operation aware. For instace,
+applied to connect-style app for each operation as they are specification and operation aware. For instance,
 `@smartrecruiters/middlewares/query/validate` middleware will be applied to any and only operation which has query
 parameters defined, passing an Error to `next` callback when `req.query` is invalid.
 
@@ -134,6 +134,7 @@ Currently following middlewares are available:
 - query parameters validation,
 - setting default query parameters values
 - removing unspecified query parameters,
+- path parameters validation,
 - content type validation,
 - routing to appropriate controller,
 - oauth scopes authorization,
@@ -141,7 +142,7 @@ Currently following middlewares are available:
 
 ### Validation middlewares
 
-Middlewares for request body and query validation expects schema validators in order to be created.
+Middlewares for request body, query and path validation expects schema validators in order to be created.
 The recommended schema validator is [`@smartrecruiters/openapi-schema-validator`](https://www.npmjs.com/package/@smartrecruiters/openapi-schemas-validator)
 
 ### Create your own openapi middleware
