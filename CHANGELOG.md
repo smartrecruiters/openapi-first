@@ -1,3 +1,9 @@
+## 1.2.0 (2024-07-08)
+
+* Creates middleware for path parameters validation
+
+
+
 ## 1.1.0 (2021-07-08)
 
 * feat: resolve refs nested under .schema property (#31) ([497aa74](https://github.com/smartrecruiters/openapi-first/commit/497aa74)), closes [#31](https://github.com/smartrecruiters/openapi-first/issues/31)
