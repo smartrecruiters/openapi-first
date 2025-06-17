@@ -2,17 +2,32 @@ const controller = require('../../../middlewares/controllers/by-property')
 
 describe('Controller', () => {
 
-    let req, res, next
+    let req,
+        res,
+        next,
+        sandbox
 
     beforeEach(() => {
-        req = sinon.spy()
-        res = sinon.spy()
-        next = sinon.spy()
+        sandbox = sinon.createSandbox()
+
+        req = {
+            baseUrl: '/api'
+        }
+        res = sandbox.spy()
+        next = sandbox.spy()
+
+        sandbox.stub(require('../../../lib/utils/otel'), 'runWithBaggage')
+            .withArgs('source.http.route', 'GET /api/example', sinon.match.func)
+            .callsFake((baggageKey, baggageValue, callback) => callback())
+    })
+
+    afterEach(() => {
+        sandbox.restore()
     })
 
     it('should build middleware', done => {
         // given
-        const operation = {'x-swagger-router-controller': 'example'}
+        const operation = {'x-swagger-router-controller': 'example', method: 'get', path: '/example'}
         const middleware = controller({dir: __dirname})(operation)
 
         // when
@@ -28,7 +43,7 @@ describe('Controller', () => {
 
     it('should build middleware from nested file', done => {
         // given
-        const operation = {'x-swagger-router-controller': 'dir.example'}
+        const operation = {'x-swagger-router-controller': 'example', method: 'get', path: '/example'}
         const middleware = controller({dir: __dirname, delimiter: /\./g})(operation)
 
         // when
@@ -44,7 +59,10 @@ describe('Controller', () => {
 
     it('should pass errors from rejected Promises to next', done => {
         // given
-        const operation = {'x-swagger-router-controller': 'rejected-promise-controller'}
+        const operation = {
+            'x-swagger-router-controller': 'rejected-promise-controller',
+            method: 'get', path: '/example'
+        }
         const middleware = controller({dir: __dirname})(operation)
 
         // when
