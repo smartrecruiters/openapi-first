@@ -1,3 +1,10 @@
+## 2.0.0 (2025-08-26)
+
+* Updates Node.js to 22
+* Updates vulnerable libs
+
+
+
 ## 1.2.0 (2024-07-08)
 
 * Creates middleware for path parameters validation
