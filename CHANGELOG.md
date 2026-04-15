@@ -1,3 +1,9 @@
+## 2.0.1 (2026-04-15)
+
+* fix: update vulnerable `lodash` package
+
+
+
 ## 2.0.0 (2025-08-26)
 
 * Updates Node.js to 22
